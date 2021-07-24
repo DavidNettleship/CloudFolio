@@ -85,13 +85,16 @@ def write_history(data):
             )
 
 
-def main():
+def main(event, context):
     cf_assets = scanner()
     data = fetch_assets(cf_assets)
-    print(data)
     val_data = value_assets(data)
-    print(val_data)
     write_history(val_data)
 
+event = ""
+context = ""
 
-main()
+main(event, context)
+
+
+#aws lambda create-function --function-name cf_fetch_data --zip-file fileb://package.zip --handler lambda_function.main --runtime python3.8 --role arn:aws:iam::298299448467:role/lambda-ex
